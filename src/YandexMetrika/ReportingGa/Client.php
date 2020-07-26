@@ -138,9 +138,19 @@ class Client
             $result = $this->httpClient->request('GET', self::REQUEST_URL, $this->buildRequestParams($start, $count));
         } catch (\GuzzleHttp\Exception\ClientException $exc) {
             if ($exc->hasResponse()) {
-                $yandexError = \GuzzleHttp\json_decode($exc->getResponse()->getBody()->getContents(), true);
-                $errMsg      = 'YandexMetrica server error: ' . $yandexError['message'] . ' (' . $yandexError['code'] . ')';
-                throw new Exception($errMsg, Exception::ERR_CODE, $exc);
+                $response    = $exc->getResponse();
+                $yandexError = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+                $response->getBody()->rewind();
+                if (isset($yandexError['error'])) {
+                    $yandexError = $yandexError['error'];
+                }
+
+                $msg       = 'Report server error: ' . ($yandexError['message'] ?? ' for error detail see response ') . ' (code:' . ($yandexError['code'] ?? '-') . ')';
+                $exception = new Exception($msg, Exception::ERR_CODE, $exc);
+
+                $exception->setResponce($response);
+
+                throw $exception;
             } else {
                 throw $exc;
             }
