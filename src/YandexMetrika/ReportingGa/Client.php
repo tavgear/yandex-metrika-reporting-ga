@@ -276,7 +276,7 @@ class Client
     }
 
     /**
-     * Set metrica params
+     * Set metrica param
      *
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/queries/requestjson-docpage/ params
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/ga/terms-docpage/ metrics
@@ -291,7 +291,7 @@ class Client
     }
 
     /**
-     * Set dimention params
+     * Set dimention param
      *
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/queries/requestjson-docpage/ params
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/ga/terms-docpage/ dimentions
@@ -306,7 +306,7 @@ class Client
     }
 
     /**
-     * Set filters params
+     * Set filters param
      *
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/queries/requestjson-docpage/ params
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/segmentation-ga-docpage/ filters
@@ -321,7 +321,22 @@ class Client
     }
 
     /**
-     * Set samplingLevel params
+     * Set sort param
+     *
+     * @link https://yandex.ru/dev/metrika/doc/api2/ga/queries/requestjson-docpage/ params
+     * @link https://yandex.ru/dev/metrika/doc/api2/ga/segmentation-ga-docpage/ sort
+     *
+     * @param string $sort String of sort in the desired format
+     * @return \self
+     */
+    public function setSort(string $sort): self
+    {
+        $this->sort = $sort;
+        return $this;
+    }
+
+    /**
+     * Set samplingLevel param
      *
      * @link https://yandex.ru/dev/metrika/doc/api2/ga/queries/requestjson-docpage/ params
      *
