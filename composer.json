@@ -1,11 +1,13 @@
 {
     "name": "tavgear/yandex-metrika-reporting-ga",
-    "description": "Yandex Metrika Reporting API Library. Part compatible with Google Analytics Core Reporting API (v3)",
+    "description": "Yandex Metrika Reporting API Library. Compatible with Google Analytics Core Reporting API (v3)",
     "type": "library",
     "keywords": [
         "yandex",
         "yandex metrika",
-        "google analytics"
+        "google analytics",
+        "Яндекс.Метрика",
+        "Яндекс"
     ],
     "license": "MIT",
     "authors": [
