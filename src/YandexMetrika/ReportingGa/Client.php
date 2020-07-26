@@ -160,6 +160,16 @@ class Client
     }
 
     /**
+     * Get the first row of the report. Used to quickly retrieve single row data.
+     *
+     * @return array First row with keys report fields
+     */
+    public function getRow(): array
+    {
+        return $this->request(1, 1)->getRowsAsArray()[0];
+    }
+
+    /**
      * Get all rows of a report.
      * The required number of requests to the YandexMetrica is performed automatically according
      * to the specified number of lines in one request
